@@ -1,8 +1,14 @@
-import React from 'react'
+import PageTitle from '../components/PageTitle'
+import Main from '../layout/Main'
 
 const About = (): JSX.Element => {
   return (
-    <div>About</div>
+    <>
+        <PageTitle title="About" />
+        <Main>
+            <h1>About</h1>
+        </Main>
+    </>
   )
 }
 

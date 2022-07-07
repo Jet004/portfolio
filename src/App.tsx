@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Nav from './components/Nav'
+import Socials from './components/Socials'
 
 // Get theme from localStorage, set to dark mode as default if
 // localStorage is not set or contains an invalid value
@@ -38,9 +39,16 @@ const App = (): JSX.Element => {
   return (
     <>
         <Nav mode={themeMode} themeSwitch={setThemeMode} />
-        <Outlet />
+        <div className={styles.container} >
+            <Outlet />
+        </div>
+        <Socials />
     </>
   )
 }
 
 export default App
+
+const styles = {
+    container: "flex flex-col items-center pt-12"
+}
