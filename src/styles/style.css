@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .bg-theme {
+        @apply bg-slate-100 dark:bg-slate-700/70
+    }
+
+    .bg-body-theme {
+        @apply bg-slate-100 dark:bg-slate-900
+    }
+
+    .text-theme {
+        @apply text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-white
+    }
+}
