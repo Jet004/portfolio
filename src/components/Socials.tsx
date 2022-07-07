@@ -1,3 +1,6 @@
+import { NavLink } from 'react-router-dom'
+
+// Import icons
 import { FaEnvelope } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa'
 import { FaLinkedin } from 'react-icons/fa'
@@ -6,9 +9,15 @@ const Socials = () => {
   return (
     <div className={styles.socials}>
         <div className={styles.icons}>
-            <FaGithub className={styles.icon} />
-            <FaLinkedin className={styles.icon} />
-            <FaEnvelope className={styles.icon} />
+            <a href="https://github.com/Jet004" target="_blank">
+                <FaGithub className={styles.icon} />
+            </a>
+            <a href="https://www.linkedin.com/in/jet004/" target="_blank">
+                <FaLinkedin className={styles.icon} />
+            </a>
+            <NavLink to="/contact">
+                <FaEnvelope className={styles.icon} />
+            </NavLink>
         </div>
     </div>
   )
