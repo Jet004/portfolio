@@ -23,5 +23,5 @@ const ThemeToggle = ({ mode, themeSwitch }: ThemeToggleProps): JSX.Element => {
 export default ThemeToggle
 
 const styles = {
-    toggle: "cursor-pointer text-2xl mr-3 ml-2 text-theme",
+    toggle: "cursor-pointer text-2xl mr-3 ml-2 text-theme text-theme-hover",
 }

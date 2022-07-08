@@ -26,7 +26,7 @@ const Socials = () => {
 export default Socials
 
 const styles = {
-    socials: "fixed right-0 sm:right-4 top-16 w-52 h-16",
+    socials: "fixed right-0 sm:right-4  xl:right-[calc(calc(100%-1280px)*.6)] top-16 w-52 h-16",
     icons: "flex justify-around inset text-sky-600 dark:text-sky-500 text-3xl pt-5",
     icon: "cursor-pointer"
 }

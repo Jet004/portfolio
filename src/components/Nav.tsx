@@ -45,6 +45,6 @@ export default Nav
 
 const styles = {
     navContainer: "inset-x-0 inset-t-0 h-16 flex justify-end items-center bg-theme",
-    navLinks: "flex min-w-[300px] items-center pl-3 py-3 border-b-2 border-sky-500",
+    navLinks: "flex min-w-[300px] items-center pl-3 py-3 xl:mr-[calc(calc(100%-1280px)*.6)] border-b-2 border-sky-500",
     link: "mx-1 p-1 text-theme text-theme-hover text-xl font-light"
 }
