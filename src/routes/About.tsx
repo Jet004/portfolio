@@ -12,9 +12,31 @@ const About = (): JSX.Element => {
         </Main>
         <PageTitle title="Tech Stack" />
         <CardContainer>
-            <Card>Frontend</Card>
-            <Card>Backend</Card>
-            <Card>CI/CD</Card>
+            <Card>
+                <h4>Frontend</h4>
+                React
+                Next.js
+
+            </Card>
+            <Card>
+                <h4>Backend</h4>
+                Node.js
+                Express
+                MySQL
+                MongoDB
+
+            </Card>
+            <Card>
+                <h4>CI/CD</h4>
+                Jest
+                Jenkins
+                Github Actions 
+
+                <h4>Databases</h4>
+
+                <h4>Design</h4>
+
+            </Card>
         </CardContainer>
     </>
   )

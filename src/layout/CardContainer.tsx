@@ -14,5 +14,5 @@ const Card = ({ children }: Props): JSX.Element => {
 export default Card
 
 const styles = {
-    cardContainer: "flex flex-wrap justify-between min-w-[300px] max-w-[900px] w-full sm:w-11/12 md:w-4/5 my-4"
+    cardContainer: "flex flex-wrap justify-between min-w-[300px] max-w-[900px] w-full sm:w-11/12 md:w-4/5"
 }

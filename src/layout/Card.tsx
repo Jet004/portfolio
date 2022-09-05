@@ -15,5 +15,5 @@ const Card = ({ children }: Props): JSX.Element => {
 export default Card
 
 const style = {
-    card: "w-[99%] sm:w-[49%] md:w-[32%] p-4 mb-4 sm:rounded-lg text-theme bg-theme"
+    card: "w-[99%] sm:w-[49%] md:w-[32%] p-4 mb-4 sm:rounded-lg text-theme bg-theme shadow-xl"
 }

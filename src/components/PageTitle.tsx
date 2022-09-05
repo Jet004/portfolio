@@ -15,5 +15,5 @@ const PageTitle = ({ title }: Props): JSX.Element => {
 export default PageTitle
 
 const styles = {
-    title: "text-theme text-3xl mt-5 mb-1"
+    title: "text-theme text-3xl mt-6"
 }

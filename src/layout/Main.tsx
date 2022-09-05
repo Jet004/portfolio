@@ -9,7 +9,7 @@ const Main = ({ children, showBackground }: Props): JSX.Element => {
     if(showBackground === undefined || showBackground === null) showBackground = true
 
   return (
-    <div className={`${styles.main} ${ showBackground ? "bg-theme" : "" }`}>
+    <div className={`${styles.main} ${ showBackground ? "bg-theme shadow-xl" : "" }`}>
         { children }
     </div>
   )
