@@ -32,7 +32,7 @@ const Nav = ({ mode, themeSwitch }: ThemeToggleProps): JSX.Element => {
         <div className={styles.navLinks}>
             { navLinks && navLinks.map( link => (
                 <NavLink
-                    className={({ isActive }) => isActive ? `${styles.link} text-sky-600 hover:text-sky-800 dark:text-sky-300 hover:dark:text-sky-400` : styles.link }
+                    className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link }
                     to={ link.path }
                 >
                     { link.page }
@@ -51,5 +51,6 @@ const styles = {
     logo: "font-mono ml-4 xl:ml-[calc(calc(100%-1280px)*0.6)] text-theme",
     caret: "animate-[blink_1.5s_ease_infinite]",
     navLinks: "flex min-w-[300px] items-center pl-3 py-3 xl:mr-[calc(calc(100%-1280px)*.6)] border-b-2 border-sky-500",
-    link: "mx-1 p-1 text-theme text-theme-hover text-xl font-light"
+    link: "mx-1 p-1 text-theme text-theme-hover text-xl font-light",
+    active: "text-theme-sky"
 }

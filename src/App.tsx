@@ -39,10 +39,10 @@ const App = (): JSX.Element => {
   return (
     <>
         <Nav mode={themeMode} themeSwitch={setThemeMode} />
+        <Socials />
         <div className={styles.container} >
             <Outlet />
         </div>
-        <Socials />
     </>
   )
 }
@@ -50,5 +50,5 @@ const App = (): JSX.Element => {
 export default App
 
 const styles = {
-    container: "flex flex-col items-center pt-12"
+    container: "flex flex-col items-center mb-12"
 }

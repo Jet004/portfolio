@@ -18,4 +18,16 @@
     .text-theme-hover {
         @apply hover:text-black dark:hover:text-white
     }
+
+    .text-theme-sky {
+        @apply text-sky-600 hover:text-sky-800 dark:text-sky-300 hover:dark:text-sky-400
+    }
+
+    .border-theme-sky {
+        @apply border-sky-600 hover:border-sky-800 dark:border-sky-400 hover:dark:border-sky-600
+    }
+
+    .button-themed {
+        @apply bg-gradient-to-b from-slate-200 to-slate-300 dark:bg-none dark:bg-black/10
+    }
 }
