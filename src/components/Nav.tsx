@@ -30,8 +30,9 @@ const Nav = ({ mode, themeSwitch }: ThemeToggleProps): JSX.Element => {
             </div>
             <div className={styles.navLinks}>
                 {navLinks &&
-                    navLinks.map((link) => (
+                    navLinks.map((link, index) => (
                         <NavLink
+                            key={index}
                             className={({ isActive }) =>
                                 isActive
                                     ? `${styles.link} ${styles.active}`

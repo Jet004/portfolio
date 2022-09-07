@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import Main from "../layout/Main";
 import PageTitle from "../components/PageTitle";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface FormValues {
     name: string;
@@ -32,11 +34,16 @@ const Contact = (): JSX.Element => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<FormValues>({});
+    } = useForm<FormValues>({
+        mode: "onChange",
+        reValidateMode: "onChange",
+        resolver: yupResolver(validationSchema),
+    });
 
-    const onSubmit: SubmitHandler<FormValues> = (formData) => {
-        console.log(formData);
+    const onSubmit = (formData: FormValues) => {
+        console.log("data: ", formData);
     };
+
     return (
         <>
             <PageTitle title="Contact Me" />
@@ -46,29 +53,37 @@ const Contact = (): JSX.Element => {
                     contact me.
                 </p>
                 <form
-                    name="contact"
                     className={styles.form}
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className={styles.formContainer}>
                         <input
                             type="text"
-                            name="name"
                             placeholder="Name"
                             className={styles.input}
+                            {...register("name")}
                         />
+                        <p className={styles.error}>                            
+                            {errors?.name?.message || " "}
+                        </p>
                         <input
                             type="email"
-                            name="email"
                             placeholder="Email Address"
                             className={styles.input}
+                            {...register("email")}
                         />
+                        <p className={styles.error}>                            
+                            {errors?.email?.message || " "}
+                        </p>
                         <textarea
                             rows={6}
-                            name="message"
                             placeholder="Message"
                             className={styles.input}
+                            {...register("message")}
                         ></textarea>
+                        <p className={styles.error}>                            
+                            {errors?.message?.message || " "}
+                        </p>
                         <input
                             type="submit"
                             value="Send"
@@ -91,4 +106,5 @@ const styles = {
         "flex flex-col justify-center items-center w-full max-w-lg mt-4",
     input: "w-full p-2 border-b-2 border-theme-500 mb-8 outline-1 outline-sky-600 dark:outline-sky-400",
     submit: "w-full text-theme-sky font-medium dark:font-normal border border-theme-sky shadow-md button-themed rounded-lg px-3 py-1 mb-2",
+    error: "text-red-500 font-mono",
 };
