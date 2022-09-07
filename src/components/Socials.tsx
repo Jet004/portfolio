@@ -28,5 +28,5 @@ export default Socials
 const styles = {
     socials: "flex justify-end sm:mr-4 xl:mr-[calc(calc(100%-1280px)*.6)] top-16",
     icons: "flex justify-around inset text-sky-600 dark:text-sky-500 text-3xl pt-5 w-52 h-16",
-    icon: "cursor-pointer"
+    icon: "cursor-pointer hover:text-sky-800 hover:dark:text-sky-300"
 }
