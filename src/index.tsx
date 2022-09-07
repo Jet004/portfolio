@@ -1,12 +1,12 @@
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import App from './App'
-import About from './routes/About'
-import Projects from './routes/Projects'
-import Contact from './routes/Contact'
-import NotFound from './routes/NotFound'
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./App";
+import About from "./routes/About";
+import Projects from "./routes/Projects";
+import Contact from "./routes/Contact";
+import NotFound from "./routes/NotFound";
 
-const app = document.getElementById('app')
+const app = document.getElementById("app");
 
 ReactDOM.render(
     <BrowserRouter>
@@ -19,5 +19,6 @@ ReactDOM.render(
                 <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>
-    </BrowserRouter>
-, app)
+    </BrowserRouter>,
+    app
+);

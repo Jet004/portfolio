@@ -1,16 +1,15 @@
-
 interface Props {
-    items: string[],
+    items: string[];
 }
 
 const CardBody = ({ items }: Props) => {
-  return (
-    <>
-        { items.map(item => (
-            <p key={ item }>{ item }</p>
-        ) )}
-    </>
-  )
-}
+    return (
+        <>
+            {items.map((item) => (
+                <p key={item}>{item}</p>
+            ))}
+        </>
+    );
+};
 
-export default CardBody
+export default CardBody;

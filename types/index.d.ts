@@ -1,8 +1,8 @@
-type modes = "dark" | "light"
+type modes = "dark" | "light";
 
 interface ThemeToggleProps {
-    mode: modes,
-    themeSwitch: React.Dispatch<React.SetStateAction<modes>>
+    mode: modes;
+    themeSwitch: React.Dispatch<React.SetStateAction<modes>>;
 }
 
 // Allow image imports

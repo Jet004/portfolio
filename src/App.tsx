@@ -1,54 +1,52 @@
-import { useState, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
-import Nav from './components/Nav'
-import Socials from './components/Socials'
+import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import Nav from "./components/Nav";
+import Socials from "./components/Socials";
 
 // Get theme from localStorage, set to dark mode as default if
 // localStorage is not set or contains an invalid value
 const getThemeMode = (defaultValue: modes): modes => {
     try {
-        const storedMode = localStorage.getItem('themeMode')
-        if(storedMode == "dark" || storedMode == "light") {
-            return storedMode
+        const storedMode = localStorage.getItem("themeMode");
+        if (storedMode == "dark" || storedMode == "light") {
+            return storedMode;
         }
 
-        return defaultValue
+        return defaultValue;
     } catch {
-        return defaultValue
+        return defaultValue;
     }
-}
+};
 
 const App = (): JSX.Element => {
-
-    const [themeMode, setThemeMode] = useState<modes>(getThemeMode("dark"))
+    const [themeMode, setThemeMode] = useState<modes>(getThemeMode("dark"));
 
     // Set theme to localStorage on change
     useEffect(() => {
-        localStorage.setItem('themeMode', themeMode)
+        localStorage.setItem("themeMode", themeMode);
 
         // Set class on html tag to toggle theme
-        const htmlElement = document.getElementById('root')
-        if(themeMode === "light") {
-            htmlElement?.classList.remove('dark')
-        } else if(themeMode === "dark") {
-            htmlElement?.classList.add('dark')
+        const htmlElement = document.getElementById("root");
+        if (themeMode === "light") {
+            htmlElement?.classList.remove("dark");
+        } else if (themeMode === "dark") {
+            htmlElement?.classList.add("dark");
         }
+    }, [themeMode]);
 
-    }, [themeMode])
+    return (
+        <>
+            <Nav mode={themeMode} themeSwitch={setThemeMode} />
+            <Socials />
+            <div className={styles.container}>
+                <Outlet />
+            </div>
+        </>
+    );
+};
 
-  return (
-    <>
-        <Nav mode={themeMode} themeSwitch={setThemeMode} />
-        <Socials />
-        <div className={styles.container} >
-            <Outlet />
-        </div>
-    </>
-  )
-}
-
-export default App
+export default App;
 
 const styles = {
-    container: "flex flex-col items-center mb-12"
-}
+    container: "flex flex-col items-center mb-12",
+};
