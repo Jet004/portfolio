@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
 import Socials from "./components/Socials";
+import Toast, { ToastProps, ToastInputs } from "./components/Toast";
+import { ToastContext, Context } from "./context/context";
 
 // Get theme from localStorage, set to dark mode as default if
 // localStorage is not set or contains an invalid value
@@ -20,6 +22,10 @@ const getThemeMode = (defaultValue: modes): modes => {
 
 const App = (): JSX.Element => {
     const [themeMode, setThemeMode] = useState<modes>(getThemeMode("dark"));
+    const [toastData, setToastData] = useState<ToastInputs | null>({
+        status: "success",
+        message: "I'm here",
+    });
 
     // Set theme to localStorage on change
     useEffect(() => {
@@ -34,13 +40,34 @@ const App = (): JSX.Element => {
         }
     }, [themeMode]);
 
+    // Set initial toast context data
+    const initialToast: Context.ToastContext = useMemo(
+        () => ({
+            showToast: ({ status, message }: ToastInputs) =>
+                setToastData({
+                    message: message,
+                    status: status,
+                }),
+        }),
+        [toastData]
+    );
+
     return (
         <>
             <Nav mode={themeMode} themeSwitch={setThemeMode} />
             <Socials />
             <div className={styles.container}>
-                <Outlet />
+                <ToastContext.Provider value={initialToast}>
+                    <Outlet />
+                </ToastContext.Provider>
             </div>
+            {toastData && (
+                <Toast
+                    status={toastData?.status}
+                    message={toastData?.message}
+                    setState={setToastData}
+                />
+            )}
         </>
     );
 };
