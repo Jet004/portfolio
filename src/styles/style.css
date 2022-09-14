@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#app {
+    height: 100%;
+}
+
 @layer components {
     .bg-theme {
         @apply bg-slate-300/80 dark:bg-slate-700/70;

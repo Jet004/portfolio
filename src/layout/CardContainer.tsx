@@ -1,9 +1,13 @@
 interface Props {
     children?: React.ReactNode;
+    styleProp?: string;
 }
 
-const Card = ({ children }: Props): JSX.Element => {
-    return <div className={styles.cardContainer}>{children}</div>;
+const Card = ({ children, styleProp }: Props): JSX.Element => {
+    styleProp = !styleProp ? "" : styleProp;
+    return (
+        <div className={`${styles.cardContainer} ${styleProp}`}>{children}</div>
+    );
 };
 
 export default Card;

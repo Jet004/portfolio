@@ -22,10 +22,7 @@ const getThemeMode = (defaultValue: modes): modes => {
 
 const App = (): JSX.Element => {
     const [themeMode, setThemeMode] = useState<modes>(getThemeMode("dark"));
-    const [toastData, setToastData] = useState<ToastInputs | null>({
-        status: "success",
-        message: "I'm here",
-    });
+    const [toastData, setToastData] = useState<ToastInputs | null>(null);
 
     // Set theme to localStorage on change
     useEffect(() => {
@@ -56,7 +53,7 @@ const App = (): JSX.Element => {
         <>
             <Nav mode={themeMode} themeSwitch={setThemeMode} />
             <Socials />
-            <div className={styles.container}>
+            <div id="container" className={styles.container}>
                 <ToastContext.Provider value={initialToast}>
                     <Outlet />
                 </ToastContext.Provider>
@@ -75,5 +72,5 @@ const App = (): JSX.Element => {
 export default App;
 
 const styles = {
-    container: "flex flex-col items-center mb-12",
+    container: "flex flex-col items-center",
 };

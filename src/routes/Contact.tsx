@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContext } from "../context/context";
 

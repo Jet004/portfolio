@@ -1,14 +1,16 @@
 interface Props {
-    items: string[];
+    styleProp?: string;
+    items?: string[];
+    children?: React.ReactNode;
 }
 
-const CardBody = ({ items }: Props) => {
+const CardBody = ({ styleProp, items, children }: Props) => {
+    styleProp = !styleProp ? "" : styleProp;
     return (
-        <>
-            {items.map((item) => (
-                <p key={item}>{item}</p>
-            ))}
-        </>
+        <div className={` ${styleProp}`}>
+            {items && items.map((item) => <p key={item}>{item}</p>)}
+            {children}
+        </div>
     );
 };
 
