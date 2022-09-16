@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
 import Socials from "./components/Socials";
-import Toast, { ToastProps, ToastInputs } from "./components/Toast";
-import { ToastContext, Context } from "./context/context";
+import Toast, { ToastInputs } from "./components/Toast";
+import { ToastContext, ScreenWidthContext, Context } from "./context/context";
 
 // Get theme from localStorage, set to dark mode as default if
 // localStorage is not set or contains an invalid value
@@ -23,7 +23,8 @@ const getThemeMode = (defaultValue: modes): modes => {
 const App = (): JSX.Element => {
     const [themeMode, setThemeMode] = useState<modes>(getThemeMode("dark"));
     const [toastData, setToastData] = useState<ToastInputs | null>(null);
-
+    const [screenWidth, setScreenWidth] = useState<number>(getScreenWidth());
+    console.log(screenWidth);
     // Set theme to localStorage on change
     useEffect(() => {
         localStorage.setItem("themeMode", themeMode);
@@ -36,6 +37,15 @@ const App = (): JSX.Element => {
             htmlElement?.classList.add("dark");
         }
     }, [themeMode]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(getScreenWidth());
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     // Set initial toast context data
     const initialToast: Context.ToastContext = useMemo(
@@ -51,8 +61,11 @@ const App = (): JSX.Element => {
 
     return (
         <>
-            <Nav mode={themeMode} themeSwitch={setThemeMode} />
-            <Socials />
+            <ScreenWidthContext.Provider value={screenWidth}>
+                <Nav mode={themeMode} themeSwitch={setThemeMode} />
+                <Socials />
+            </ScreenWidthContext.Provider>
+            <div className={styles.spacer}></div>
             <div id="container" className={styles.container}>
                 <ToastContext.Provider value={initialToast}>
                     <Outlet />
@@ -72,5 +85,8 @@ const App = (): JSX.Element => {
 export default App;
 
 const styles = {
-    container: "flex flex-col items-center",
+    spacer: "flex h-32 bg-body-theme",
+    container: "flex flex-col items-center min-w-[320px]",
 };
+
+const getScreenWidth = () => window.innerWidth;

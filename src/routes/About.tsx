@@ -110,8 +110,8 @@ export default About;
 
 const styles = {
     main: "flex-col",
-    links: "flex justify-around mb-6",
-    link: "text-theme-sky font-medium dark:font-normal border border-theme-sky shadow-md button-themed rounded-lg px-3 py-1 mt-4",
+    links: "flex flex-wrap justify-around mb-4",
+    link: "text-theme-sky font-medium dark:font-normal border border-theme-sky shadow-md button-themed rounded-lg px-3 pt-1 pb-1.5 mt-2",
     profile:
         "flex flex-col justify-center items-center sm:flex-row sm:justify-start mx-4 my-6",
     dp: "rounded-full w-44 h-44 mb-4 sm:mb-0",

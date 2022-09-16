@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ScreenWidthContext } from "../context/context";
 
 // Import icons
 import { FaEnvelope } from "react-icons/fa";
@@ -6,19 +7,22 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 const Socials = () => {
+    const screenWidth = useContext(ScreenWidthContext);
     return (
-        <div className={styles.socials}>
-            <div className={styles.icons}>
-                <a href="https://github.com/Jet004" target="_blank">
-                    <FaGithub className={styles.icon} />
-                </a>
-                <a href="https://www.linkedin.com/in/jet004/" target="_blank">
-                    <FaLinkedin className={styles.icon} />
-                </a>
-                <NavLink to="/contact">
-                    <FaEnvelope className={styles.icon} />
-                </NavLink>
-            </div>
+        <div
+            className={`${screenWidth < 640 ? styles.mobile : styles.desktop} ${
+                styles.socials
+            }`}
+        >
+            <a href="https://github.com/Jet004" target="_blank">
+                <FaGithub className={styles.icon} />
+            </a>
+            <a href="https://www.linkedin.com/in/jet004/" target="_blank">
+                <FaLinkedin className={styles.icon} />
+            </a>
+            <a href="mailto:jeturner44@outlook.com">
+                <FaEnvelope className={styles.icon} />
+            </a>
         </div>
     );
 };
@@ -26,8 +30,9 @@ const Socials = () => {
 export default Socials;
 
 const styles = {
-    socials:
-        "flex justify-end sm:mr-4 xl:mr-[calc(calc(100%-1280px)*.6)] top-16",
-    icons: "flex justify-around inset text-sky-600 dark:text-sky-500 text-3xl pt-5 w-52 h-16",
-    icon: "cursor-pointer hover:text-sky-800 hover:dark:text-sky-300",
+    desktop:
+        "fixed right-0 top-16 w-52 text-3xl sm:mr-4 xl:mr-[calc(calc(100%-1280px)*.6)]",
+    mobile: "fixed top-0 left-[112px] mob:left-1/2 mob:-translate-x-1/2 w-32 text-2xl",
+    socials: "flex z-50 justify-around pt-5 h-16",
+    icon: "cursor-pointer text-sky-600 dark:text-sky-500 hover:text-sky-800 hover:dark:text-sky-300",
 };

@@ -147,9 +147,9 @@ const Contact = (): JSX.Element => {
 export default Contact;
 
 const styles = {
-    main: "flex-col p-8",
-    description: "sm:self-center min-w-[400] max-w-lg my-2",
-    form: "flex justify-center w-full min-w-[400] mt-2 text-slate-600",
+    main: "flex-col p-8 min-w-[320px]",
+    description: "sm:self-center max-w-lg my-2",
+    form: "flex justify-center w-full mt-2 text-slate-600",
     formContainer:
         "flex flex-col justify-center items-center w-full max-w-lg mt-4",
     formItem: "flex flex-col items-center w-full pb-2",

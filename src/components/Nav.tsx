@@ -1,49 +1,34 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
-import * as H from "history";
+import NavLinks from "./NavLinks";
+
+// Import Icons
+import { AiOutlineMenu } from "react-icons/ai";
 
 const Nav = ({ mode, themeSwitch }: ThemeToggleProps): JSX.Element => {
-    interface NavLinks {
-        page: String;
-        path: H.To;
-    }
+    const [burgerToggle, setBurgerToggle] = useState(0);
 
-    const navLinks: NavLinks[] = [
-        {
-            page: "About",
-            path: "/about",
-        },
-        {
-            page: "Projects",
-            path: "/projects",
-        },
-        {
-            page: "Contact",
-            path: "/contact",
-        },
-    ];
-
+    const toggle = () => {
+        const height = burgerToggle === 0 ? 80 : 0;
+        setBurgerToggle(height);
+    };
     return (
         <div className={styles.navContainer}>
             <div className={styles.logo}>
-                &gt; Jet004<span className={styles.caret}>_</span>
+                <NavLink to="/">
+                    &gt; Jet004<span className={styles.caret}>_</span>
+                </NavLink>
             </div>
-            <div className={styles.navLinks}>
-                {navLinks &&
-                    navLinks.map((link, index) => (
-                        <NavLink
-                            key={index}
-                            className={({ isActive }) =>
-                                isActive
-                                    ? `${styles.link} ${styles.active}`
-                                    : styles.link
-                            }
-                            to={link.path}
-                        >
-                            {link.page}
-                        </NavLink>
-                    ))}
-                <ThemeToggle mode={mode} themeSwitch={themeSwitch} />
+            <NavLinks
+                mode={mode}
+                themeSwitch={themeSwitch}
+                open={burgerToggle}
+                toggle={toggle}
+            />
+            <div className={styles.burgerMenu} onClick={toggle}>
+                <a href="#">
+                    <AiOutlineMenu className={styles.icon} />
+                </a>
             </div>
         </div>
     );
@@ -53,11 +38,9 @@ export default Nav;
 
 const styles = {
     navContainer:
-        "inset-x-0 inset-t-0 h-16 flex justify-between items-center text-xl bg-theme shadow-xl",
-    logo: "font-mono ml-4 xl:ml-[calc(calc(100%-1280px)*0.6)] text-theme",
+        "fixed inset-x-0 inset-t-0 h-16 flex justify-between items-center min-w-[320px] text-xl bg-slate-300 dark:bg-slate-800 shadow-xl z-50",
+    logo: "font-mono ml-4 xl:ml-[calc(calc(100%-1280px)*0.6)] text-theme text-sm sm:text-xl",
     caret: "animate-[blink_1.5s_ease_infinite]",
-    navLinks:
-        "flex min-w-[300px] items-center pl-3 py-3 xl:mr-[calc(calc(100%-1280px)*.6)] border-b-2 border-sky-500",
-    link: "mx-1 p-1 text-theme text-theme-hover text-xl font-light",
-    active: "text-theme-sky",
+    burgerMenu: "sm:hidden mr-4",
+    icon: "cursor-pointer text-3xl text-theme text-theme-hover",
 };

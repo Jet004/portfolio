@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Status, ToastInputs } from "../components/Toast";
+import { ToastInputs } from "../components/Toast";
 
 export declare namespace Context {
     export interface ToastContext {
@@ -8,3 +8,5 @@ export declare namespace Context {
 }
 
 export const ToastContext = createContext<Context.ToastContext | null>(null);
+
+export const ScreenWidthContext = createContext<number>(0);
